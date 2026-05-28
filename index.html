@@ -3,193 +3,483 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Your Name — Resume</title>
+  <title>Uday Kiran Gudla — Embedded Systems Specialist</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
   <style>
     :root{
-      --accent:#0a66c2;
-      --muted:#6b7280;
-      --bg:#f7f7fb;
-      --paper:#ffffff;
-      --max-width:900px;
-      --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-    }
-    html,body{height:100%;margin:0;font-family:var(--sans);background:var(--bg);color:#111827}
-    .wrap{max-width:var(--max-width);margin:28px auto;padding:28px}
-    .card{background:var(--paper);box-shadow:0 6px 18px rgba(15,23,42,0.08);border-radius:10px;overflow:hidden}
-    header{display:flex;flex-wrap:wrap;gap:12px;align-items:center;padding:28px 28px;border-bottom:1px solid #eef2f7}
-    .name{flex:1}
-    h1{margin:0;font-size:1.75rem}
-    .title{margin:2px 0;color:var(--muted)}
-    .contact{display:flex;gap:12px;font-size:0.95rem;color:var(--muted);flex-wrap:wrap}
-
-    .container{display:grid;grid-template-columns:1fr 2fr;gap:28px;padding:28px}
-    .section{margin-bottom:18px}
-    h2{font-size:1rem;margin:0 0 10px 0;color:var(--accent)}
-    p.lead{margin:0;color:#1f2937}
-
-    /* left column */
-    .left .box{background:#fbfdff;border-radius:8px;padding:14px;margin-bottom:14px}
-    .skills{display:flex;flex-wrap:wrap;gap:8px}
-    .skill{background:#eef6ff;color:var(--accent);padding:6px 8px;border-radius:6px;font-size:0.85rem}
-
-    /* experience rows */
-    .job{padding:12px 0;border-bottom:1px dashed #e6eef9}
-    .job:last-child{border-bottom:0}
-    .job h3{margin:0;font-size:1rem}
-    .meta{font-size:0.9rem;color:var(--muted)}
-
-    footer{padding:14px 28px;border-top:1px solid #eef2f7;color:var(--muted);font-size:0.9rem}
-
-    @media (max-width:800px){
-      .container{grid-template-columns:1fr;padding:20px}
-      header{padding:20px}
-      .wrap{padding:12px}
+      --bg:#0b1020;
+      --bg-2:#0f172a;
+      --panel:#ffffff;
+      --ink:#0f172a;
+      --ink-2:#334155;
+      --muted:#64748b;
+      --line:#e5e7eb;
+      --brand:#0ea5e9;
+      --brand-2:#14b8a6;
+      --brand-3:#10b981;
+      --accent:#f59e0b;
+      --chip-bg:#ecfeff;
+      --chip-ink:#0e7490;
+      --radius:14px;
+      --shadow:0 10px 30px rgba(15,23,42,0.08), 0 2px 6px rgba(15,23,42,0.04);
+      --max:1240px;
+      --sans:'Source Sans 3', 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+      --mono:'JetBrains Mono', ui-monospace, Menlo, Consolas, monospace;
     }
 
-    /* Print friendly */
-    @page { size: A4; margin: 20mm }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:var(--sans);
+      color:var(--ink);
+      background:
+        radial-gradient(1200px 600px at -10% -20%, rgba(14,165,233,.15), transparent 60%),
+        radial-gradient(900px 500px at 110% 0%, rgba(20,184,166,.18), transparent 60%),
+        linear-gradient(180deg, #f8fafc 0%, #eef2f7 100%);
+      min-height:100vh;
+      -webkit-font-smoothing:antialiased;
+      line-height:1.55;
+    }
+    a{color:var(--brand);text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    .page{max-width:var(--max);margin:0 auto;padding:28px clamp(16px,3vw,40px) 60px}
+
+    /* ===== Hero ===== */
+    .hero{
+      position:relative;
+      border-radius:calc(var(--radius) + 6px);
+      padding:clamp(28px,4vw,48px);
+      color:#fff;
+      background:
+        radial-gradient(800px 300px at 90% 10%, rgba(255,255,255,.18), transparent 60%),
+        linear-gradient(135deg, #0f766e 0%, #0ea5e9 55%, #06b6d4 100%);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    .hero::before{
+      content:"";position:absolute;inset:auto -40px -80px auto;width:360px;height:360px;
+      background:radial-gradient(circle, rgba(16,185,129,.35), transparent 60%);
+      filter:blur(10px);pointer-events:none;
+    }
+    .hero-grid{
+      display:grid;grid-template-columns:auto 1fr auto;gap:clamp(20px,3vw,36px);align-items:center;
+      position:relative;z-index:1;
+    }
+    .avatar{
+      width:112px;height:112px;border-radius:50%;
+      background:linear-gradient(135deg,#fff,#cffafe);
+      color:#0f766e;font-weight:800;font-size:2.2rem;
+      display:flex;align-items:center;justify-content:center;
+      box-shadow:0 8px 24px rgba(0,0,0,.18), inset 0 0 0 4px rgba(255,255,255,.6);
+      letter-spacing:.5px;
+    }
+    .hero h1{margin:0 0 6px 0;font-size:clamp(1.8rem,3vw,2.6rem);font-weight:800;letter-spacing:-.02em}
+    .hero .role{font-weight:600;opacity:.95;font-size:clamp(1rem,1.4vw,1.15rem)}
+    .hero .tagline{margin-top:10px;opacity:.9;max-width:62ch}
+    .hero .contact{display:flex;flex-wrap:wrap;gap:10px 18px;margin-top:16px;font-size:.95rem}
+    .hero .contact a, .hero .contact span{color:#fff;display:inline-flex;align-items:center;gap:8px;opacity:.95}
+    .hero .contact a:hover{text-decoration:underline}
+    .ico{width:16px;height:16px;flex:none}
+
+    .hero-actions{display:flex;flex-direction:column;gap:10px;align-items:flex-end}
+    .badge{
+      display:inline-flex;align-items:center;gap:8px;
+      background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);
+      padding:6px 12px;border-radius:999px;font-size:.85rem;backdrop-filter:blur(6px);
+    }
+    .dot{width:8px;height:8px;border-radius:50%;background:#22c55e;box-shadow:0 0 0 4px rgba(34,197,94,.25)}
+    .btn{
+      cursor:pointer;border:0;border-radius:10px;padding:10px 16px;font-weight:600;font-size:.95rem;
+      background:#fff;color:#0f766e;box-shadow:0 6px 16px rgba(0,0,0,.18);
+      display:inline-flex;align-items:center;gap:8px;transition:transform .15s ease;
+    }
+    .btn:hover{transform:translateY(-1px)}
+
+    /* ===== Stats strip ===== */
+    .stats{
+      display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:18px;
+    }
+    .stat{
+      background:var(--panel);border-radius:var(--radius);padding:14px 16px;box-shadow:var(--shadow);
+      display:flex;align-items:center;gap:12px;
+    }
+    .stat .num{font-size:1.4rem;font-weight:800;color:var(--ink);line-height:1}
+    .stat .lbl{font-size:.8rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+    .stat .ic{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;
+      background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff}
+
+    /* ===== Layout ===== */
+    .grid{
+      display:grid;grid-template-columns:340px 1fr;gap:22px;margin-top:22px;
+    }
+    .panel{
+      background:var(--panel);border-radius:var(--radius);padding:20px 22px;box-shadow:var(--shadow);
+    }
+    .panel + .panel{margin-top:18px}
+    .panel h2{
+      margin:0 0 12px 0;font-size:.85rem;font-weight:700;color:var(--brand);
+      text-transform:uppercase;letter-spacing:.12em;display:flex;align-items:center;gap:8px;
+    }
+    .panel h2::before{
+      content:"";width:18px;height:3px;border-radius:3px;
+      background:linear-gradient(90deg,var(--brand),var(--brand-2));
+    }
+    .panel h3{margin:0;font-size:1.02rem;font-weight:700;color:var(--ink)}
+
+    .chips{display:flex;flex-wrap:wrap;gap:8px}
+    .chip{
+      background:var(--chip-bg);color:var(--chip-ink);font-weight:600;font-size:.82rem;
+      padding:6px 10px;border-radius:999px;border:1px solid #cffafe;
+    }
+    .chip.alt{background:#ecfdf5;color:#047857;border-color:#a7f3d0}
+
+    .kv{display:grid;grid-template-columns:auto 1fr;gap:8px 14px;font-size:.93rem}
+    .kv dt{color:var(--muted);font-weight:600}
+    .kv dd{margin:0;color:var(--ink-2)}
+
+    .edu{display:flex;gap:12px;align-items:flex-start}
+    .edu .badge-ic{
+      width:40px;height:40px;border-radius:10px;flex:none;
+      background:linear-gradient(135deg,#fde68a,#f59e0b);color:#7c2d12;
+      display:flex;align-items:center;justify-content:center;font-weight:800;
+    }
+    .edu .meta{color:var(--muted);font-size:.88rem}
+
+    /* timeline */
+    .timeline{position:relative;padding-left:22px}
+    .timeline::before{
+      content:"";position:absolute;left:7px;top:6px;bottom:6px;width:2px;
+      background:linear-gradient(180deg,var(--brand),var(--brand-2));border-radius:2px;
+    }
+    .tl{position:relative;padding:0 0 14px 0}
+    .tl:last-child{padding-bottom:0}
+    .tl::before{
+      content:"";position:absolute;left:-20px;top:6px;width:12px;height:12px;border-radius:50%;
+      background:#fff;border:3px solid var(--brand);box-shadow:0 0 0 3px rgba(14,165,233,.18);
+    }
+    .tl .yr{font-family:var(--mono);font-size:.78rem;color:var(--muted)}
+    .tl .co{font-weight:700;color:var(--ink)}
+
+    /* Profile bullets */
+    .profile{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin-top:6px}
+    .pcard{
+      border:1px solid var(--line);border-radius:12px;padding:14px;background:#fff;
+      display:flex;gap:12px;align-items:flex-start;
+    }
+    .pcard .pic{
+      width:36px;height:36px;border-radius:9px;flex:none;color:#fff;
+      display:flex;align-items:center;justify-content:center;
+      background:linear-gradient(135deg,var(--brand),var(--brand-2));
+    }
+    .pcard p{margin:0;font-size:.92rem;color:var(--ink-2)}
+    .pcard strong{color:var(--ink)}
+
+    /* Jobs */
+    .job{
+      position:relative;padding:18px 0;border-top:1px dashed var(--line);
+    }
+    .job:first-of-type{border-top:0;padding-top:0}
+    .job-head{display:flex;flex-wrap:wrap;gap:6px 16px;align-items:baseline;justify-content:space-between}
+    .job-head h3{font-size:1.06rem}
+    .company{
+      color:var(--brand);font-weight:600;
+    }
+    .job-meta{
+      display:flex;flex-wrap:wrap;gap:6px 14px;color:var(--muted);font-size:.88rem;margin-top:4px;
+    }
+    .job-meta .pill{
+      background:#f1f5f9;color:#475569;padding:2px 10px;border-radius:999px;font-size:.78rem;font-weight:600;
+    }
+    .job ul{margin:10px 0 0 0;padding-left:18px;color:var(--ink-2)}
+    .job ul li{margin:4px 0}
+    .job ul li::marker{color:var(--brand-2)}
+
+    /* Footer */
+    footer{
+      margin-top:28px;text-align:center;color:var(--muted);font-size:.86rem;
+    }
+
+    /* Responsive */
+    @media (max-width:1000px){
+      .grid{grid-template-columns:1fr}
+      .stats{grid-template-columns:repeat(2,1fr)}
+      .hero-grid{grid-template-columns:auto 1fr}
+      .hero-actions{grid-column:1 / -1;flex-direction:row;justify-content:flex-start}
+    }
+    @media (max-width:560px){
+      .hero-grid{grid-template-columns:1fr;text-align:left}
+      .avatar{width:84px;height:84px;font-size:1.6rem}
+      .stats{grid-template-columns:1fr 1fr}
+    }
+
+    /* Print */
+    @page{size:A4;margin:14mm}
     @media print{
-      body{background:white;color:#000}
-      .wrap{box-shadow:none;margin:0;padding:0}
-      .card{box-shadow:none;border-radius:0}
-      .container{grid-template-columns:1fr 2fr}
-      header, footer, #printBtn{display:none}
-      a[href]:after { content: "" }
+      body{background:#fff}
+      .page{padding:0;max-width:none}
+      .hero{color:#fff;-webkit-print-color-adjust:exact;print-color-adjust:exact;border-radius:0}
+      .panel,.stat,.pcard{box-shadow:none;border:1px solid #e5e7eb}
+      .hero-actions,.btn,.badge,#printBtn{display:none !important}
+      .grid{grid-template-columns:300px 1fr;gap:14px}
+      a{color:inherit;text-decoration:none}
+      .job{page-break-inside:avoid}
     }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <div class="card">
-      <header>
-        <div class="name">
+  <div class="page">
+
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+      <div class="hero-grid">
+        <div class="avatar">UK</div>
+        <div>
           <h1>Uday Kiran Gudla</h1>
-          <div class="title">Senior Developer • Bangalore</div>
+          <div class="role">Automotive MCAL · Embedded Systems Specialist</div>
+          <p class="tagline">12+ years engineering high-reliability firmware across automotive, IoT, industrial and railway signalling — with deep expertise in AUTOSAR MCAL, Aurix TriCore, ARM Cortex-M and ZigBee/BLE ecosystems.</p>
           <div class="contact">
-            <div>Email: <a href="mailto:uday5091@gmail.com">uday5091@gmail.com</a></div>
-            <div>Phone: 9966066797 </div>
-            <div><a href="#">github.com/UdayKiranGudla</a></div>
-            <div><a href="#">linkedin.com/in/UdayKiranGudla</a></div>
+            <a href="mailto:uday5091@gmail.com">uday5091@gmail.com</a>
+            <span>+91 9966066797</span>
+            <span>Bangalore, India</span>
+            <a href="https://github.com/UdayKiranGudla" target="_blank" rel="noopener">github.com/UdayKiranGudla</a>
+            <a href="https://www.linkedin.com/in/UdayKiranGudla" target="_blank" rel="noopener">linkedin.com/in/UdayKiranGudla</a>
           </div>
         </div>
-        <div style="min-width:160px;text-align:right">
-          <div style="font-size:.85rem;color:var(--muted)">Available for:</div>
-          <div style="font-weight:600">Full-time / Contract</div>
-          <div style="margin-top:10px">
-            <button id="printBtn" style="background:var(--accent);color:#fff;border:0;padding:8px 10px;border-radius:6px;cursor:pointer">Download PDF</button>
-          </div>
+        <div class="hero-actions">
+          <span class="badge"><span class="dot"></span> Open to opportunities</span>
+          <a id="printBtn" class="btn" href="UdayKiranResume.pdf" download="UdayKiranGudla-Resume.pdf" aria-label="Download resume as PDF">Download PDF</a>
         </div>
-      </header>
-
-      <div class="container">
-        <aside class="left">
-          <div class="box section">
-            <h2>Summary</h2>
-            <p class="lead">Embedded firmware engineer with 12+ years of experience building industrial and consumer IoT products, automotive MCAL drivers and railway signalling systems. Strong expertise in low-level firmware, peripheral drivers, communication protocols and safety/standards (AUTOSAR, ISO26262). Effective in cross-functional teams and CI/CD-driven delivery.</p>
-          </div>
-
-          <div class="box section">
-            <h2>Technical Proficiencies</h2>
-            <ul style="padding-left:18px;margin:0;color:#1f2937">
-              <li><strong>Programming Languages:</strong> Low Level assembly, Embedded C, C#, Python</li>
-              <li><strong>Micro controllers:</strong> ARM Cortex M0/M3/M33 (NXP, ST, Silicon Labs), Aurix TriCore (Infineon)</li>
-              <li><strong>Operating Systems:</strong> Micrium OS, Bare metal</li>
-              <li><strong>Protocols and Interfaces:</strong> I2C, SPI, UART, Ethernet, ZigBee</li>
-              <li><strong>Debug tools:</strong> JTAG/SWD, GDB, Oscilloscopes, Logic analyzers, UDE</li>
-              <li><strong>Software Development:</strong> Products for Indian Railways, IoT Devices (Consumer & Industrial), Automotive MCAL, CI/CD with Bitbucket, Jenkins</li>
-              <li><strong>Standards & Domains:</strong> AUTOSAR, ISO26262, ZigBee, Matter, Indian Railways S&T</li>
-            </ul>
-          </div>
-
-          <div class="box section">
-            <h2>Education</h2>
-            <div>
-              <strong>Vignan Foundation for Science, Technology and Research</strong>
-              <div class="meta">B.Tech. in Electronics and Communications — June 2009 – June 2013 • CGPA: 8.0</div>
-              <div style="margin-top:6px;font-size:0.9rem;color:var(--muted)">6 months internship in embedded systems at Efftronics, Vijayawada</div>
-            </div>
-          </div>
-        </aside>
-
-        <main>
-          <section class="section">
-            <h2>Experience</h2>
-
-            <div class="job">
-              <h3>Staff Specialist – Automotive MCAL — Infineon Technologies</h3>
-              <div class="meta">Bangalore • Jan 2024 – Present (~2Y)</div>
-              <ul>
-                <li>Develop MCAL drivers for Aurix 3rd Generation MCUs and own Ethernet MCAL module delivery.</li>
-                <li>Implement SPI and Ethernet drivers following AUTOSAR architecture.</li>
-                <li>Apply ASPICE and ISO26262 practices; produce high-quality requirements and design artifacts.</li>
-                <li>Use Jama, Enterprise Architect, Tressos, UDE, Polyspace and Lint for design, validation and static analysis.</li>
-                <li>Maintain CI/CD pipelines with Jenkins and Bitbucket; manage work via Jira.</li>
-                <li>Automate utilities and release tooling using Python to support production releases.</li>
-              </ul>
-            </div>
-
-            <div class="job">
-              <h3>Development Engineer – Embedded — Signify Innovations Labs (Philips Lighting)</h3>
-              <div class="meta">Bangalore • Oct 2020 – Dec 2023 (3Y 2M)</div>
-              <ul>
-                <li>Contributed firmware features for Philips Hue lighting (ZigBee & BLE) within an agile team.</li>
-                <li>Extended ZigBee application stacks from Silicon Labs, Atmel and TI for product features.</li>
-                <li>Implemented color representation and conversion logic for accurate color reproduction.</li>
-                <li>Supported CI/CD workflows (Bitbucket, Jenkins) and tracked work in Jira.</li>
-                <li>Implemented device drivers (I2C, PWM, DMA, UART) and utilities using Embedded C, C# and Python.</li>
-                <li>Performed hardware analysis using logic analyzers and oscilloscopes; worked on EFR32 and SAMR21 MCUs.</li>
-              </ul>
-            </div>
-
-            <div class="job">
-              <h3>Embedded Engineer — IKA India Private Limited</h3>
-              <div class="meta">Bangalore • Apr 2017 – Oct 2020 (3Y 7M)</div>
-              <ul>
-                <li>Designed and shipped firmware for IKA laboratory instruments (Matrix, T25, MultiDrive) in a small team.</li>
-                <li>Developed STR32 firmware in Keil; used SVN, Jira and Confluence for versioning and tracking.</li>
-                <li>Integrated third-party BLE/Wi‑Fi chipsets over UART and wrote related drivers.</li>
-                <li>Built graphical UIs on LCDs using EasyGUI and TouchGFX and coordinated with distributed teams.</li>
-              </ul>
-            </div>
-
-            <div class="job">
-              <h3>Senior Software Engineer — Tech Mahindra (Medical Devices Team)</h3>
-              <div class="meta">Bangalore • Jul 2016 – Apr 2017 (9M)</div>
-              <ul>
-                <li>Developed POC firmware for a next-generation blood centrifuge with Terumo-BCT USA.</li>
-                <li>Integrated ADCs, color sensors, RFID and motor-control interfaces.</li>
-                <li>Implemented CAN and UART drivers on Freescale MK20/MK40 MCUs.</li>
-              </ul>
-            </div>
-
-            <div class="job">
-              <h3>Firmware Engineer — Efftronics Systems Private Limited</h3>
-              <div class="meta">Vijayawada • Jun 2013 – Jun 2016 (3Y)</div>
-              <ul>
-                <li>Built firmware for railway signalling and home automation products.</li>
-                <li>Implemented protocol conversion for signalling and UIs on alphanumeric LCDs.</li>
-                <li>Developed services and drivers for NFC, NTP, web interfaces and low-level buses (I2C, SPI, UART).</li>
-              </ul>
-            </div>
-          </section>
-
-          <section class="section">
-            <h2>Personal Information</h2>
-            <p class="meta">Languages known: English, Telugu, Hindi • Marital Status: Married</p>
-          </section>
-        </main>
       </div>
+    </section>
 
-      <footer>
-        Last updated: Dec 2025 • Print-friendly — use browser print to save as PDF
-      </footer>
+    <!-- ===== STATS ===== -->
+    <section class="stats" aria-label="Highlights">
+      <div class="stat">
+        <div><div class="num">12+</div><div class="lbl">Years Experience</div></div>
+      </div>
+      <div class="stat">
+        <div><div class="num">5</div><div class="lbl">Companies</div></div>
+      </div>
+      <div class="stat">
+        <div><div class="num">4</div><div class="lbl">Domains</div></div>
+      </div>
+      <div class="stat">
+        <div><div class="num">ISO 26262</div><div class="lbl">Functional Safety</div></div>
+      </div>
+    </section>
+
+    <!-- ===== MAIN GRID ===== -->
+    <div class="grid">
+
+      <!-- LEFT COLUMN -->
+      <aside>
+        <div class="panel">
+          <h2>Career Objective</h2>
+          <p style="margin:0;color:var(--ink-2)">Leverage expertise in Embedded C, microcontroller architectures and communication protocols to design high-reliability embedded solutions while contributing to system architecture, product innovation and technical leadership.</p>
+        </div>
+
+        <div class="panel">
+          <h2>Core Competencies</h2>
+          <div class="chips">
+            <span class="chip">AUTOSAR MCAL</span>
+            <span class="chip">Embedded C</span>
+            <span class="chip">ISO 26262</span>
+            <span class="chip">ASPICE</span>
+            <span class="chip">Aurix TriCore</span>
+            <span class="chip">ARM Cortex-M</span>
+            <span class="chip alt">Ethernet</span>
+            <span class="chip alt">SPI / I²C / UART</span>
+            <span class="chip alt">ZigBee / BLE</span>
+            <span class="chip alt">Matter</span>
+            <span class="chip">CI/CD</span>
+            <span class="chip">Board Bring-up</span>
+            <span class="chip">Technical Leadership</span>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h2>Technical Skills</h2>
+          <dl class="kv">
+            <dt>Languages</dt><dd>Embedded C, Low-Level Assembly, C#, Python</dd>
+            <dt>MCUs</dt><dd>ARM Cortex-M0/M3/M33 (NXP, STMicro, Silicon Labs), Infineon Aurix TriCore</dd>
+            <dt>OS</dt><dd>Micrium OS, Bare-Metal</dd>
+            <dt>Protocols</dt><dd>I²C, SPI, UART, Ethernet, ZigBee</dd>
+            <dt>Debug</dt><dd>JTAG/SWD, GDB, UDE, Oscilloscope, Logic Analyzer</dd>
+            <dt>DevOps</dt><dd>Bitbucket, Jenkins, Jira, CI/CD Pipelines</dd>
+            <dt>Standards</dt><dd>AUTOSAR, ISO 26262, ZigBee, Matter, Indian Railways S&amp;T</dd>
+          </dl>
+        </div>
+
+        <div class="panel">
+          <h2>Education</h2>
+          <div class="edu">
+            <div>
+              <div><strong>B.Tech — Electronics &amp; Communication</strong></div>
+              <div class="meta">Vignan's Foundation for Science, Technology &amp; Research, Guntur</div>
+              <div class="meta">Jun 2009 – Jun 2013 · CGPA 8.0</div>
+              <div class="meta" style="margin-top:6px">6-month embedded internship at Efftronics, Vijayawada</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h2>Career Timeline</h2>
+          <div class="timeline">
+            <div class="tl"><div class="yr">Since 2024</div><div class="co">Infineon Technologies</div></div>
+            <div class="tl"><div class="yr">2020 – 2023</div><div class="co">Signify Innovations Labs</div></div>
+            <div class="tl"><div class="yr">2017 – 2020</div><div class="co">IKA India Private Limited</div></div>
+            <div class="tl"><div class="yr">2016 – 2017</div><div class="co">Tech Mahindra</div></div>
+            <div class="tl"><div class="yr">2013 – 2016</div><div class="co">Efftronics Systems Pvt. Ltd.</div></div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h2>Personal</h2>
+          <dl class="kv">
+            <dt>Languages</dt><dd>English, Telugu, Hindi</dd>
+            <dt>Location</dt><dd>Bangalore, India</dd>
+          </dl>
+        </div>
+      </aside>
+
+      <!-- RIGHT COLUMN -->
+      <main>
+        <section class="panel">
+          <h2>Profile Summary</h2>
+          <div class="profile">
+            <div class="pcard">
+              <p><strong>Embedded Systems Specialist</strong> with 12+ years delivering high-reliability firmware across automotive, IoT, industrial and railway signaling domains.</p>
+            </div>
+            <div class="pcard">
+              <p><strong>Automotive Software Expert</strong> in AUTOSAR MCAL development for Infineon Aurix — owning Ethernet &amp; SPI modules under ASPICE and ISO 26262.</p>
+            </div>
+            <div class="pcard">
+              <p>Built <strong>connected device ecosystems</strong> — ZigBee/BLE consumer products integrating comm stacks, drivers and hardware interfaces.</p>
+            </div>
+            <div class="pcard">
+              <p>Hands-on <strong>HW–SW integration &amp; board bring-up</strong> with JTAG/SWD, logic analyzers, oscilloscopes and GDB.</p>
+            </div>
+            <div class="pcard">
+              <p>End-to-end <strong>agile delivery</strong> with global teams using CI/CD pipelines, scripting and modern toolchains.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <h2>Work Experience</h2>
+
+          <article class="job">
+            <div class="job-head">
+              <div>
+                <h3>Staff Specialist — Automotive MCAL</h3>
+                <div class="company">Infineon Technologies</div>
+              </div>
+              <div class="job-meta">
+                <span class="pill">Current</span>
+                <span>Bangalore</span>
+                <span>Jan 2024 – Present</span>
+              </div>
+            </div>
+            <ul>
+              <li>Leading development and optimization of AUTOSAR MCAL drivers for Infineon Aurix 3rd Generation TriCore microcontrollers, enabling reliable, high-performance ECU software platforms.</li>
+              <li>Owning the <strong>Ethernet MCAL</strong> module end-to-end — design, development, integration and validation in line with AUTOSAR architecture and automotive quality standards.</li>
+              <li>Engineering <strong>SPI &amp; Ethernet</strong> MCAL components, strengthening communication stack performance and BSW integration.</li>
+              <li>Implementing ASPICE processes and ISO 26262 functional safety practices with traceable, high-quality documentation.</li>
+              <li>Using advanced toolchains: <em>Jama, Enterprise Architect, Tresos, UDE, Polyspace, Lint</em>.</li>
+              <li>Managing CI/CD via Jenkins, Bitbucket and Jira; building Python automation to boost release efficiency.</li>
+              <li>Delivering multiple production-grade MCAL releases and driving cross-team technical ownership.</li>
+            </ul>
+          </article>
+
+          <article class="job">
+            <div class="job-head">
+              <div>
+                <h3>Development Engineer — Embedded</h3>
+                <div class="company">Signify (formerly Philips Lighting)</div>
+              </div>
+              <div class="job-meta">
+                <span>Bangalore</span>
+                <span>Oct 2020 – Dec 2023</span>
+              </div>
+            </div>
+            <ul>
+              <li>Contributed in an Agile Scrum team (10 members) developing firmware for <strong>Philips Hue</strong> smart lighting — enabling high-fidelity color reproduction and smart-home connectivity.</li>
+              <li>Developed features on ZigBee application stacks from <strong>Silicon Labs, Atmel and TI</strong> for large-scale IoT lighting ecosystems.</li>
+              <li>Implemented firmware modules in Embedded C with C# &amp; Python tooling for workflows and integration.</li>
+              <li>Designed low-level device drivers (I²C, PWM, DMA, UART) improving hardware abstraction and stability.</li>
+              <li>Worked on advanced MCUs: <strong>EFR32MG21, MG13, Atmel SAMR21</strong>.</li>
+              <li>Maintained CI/CD via Bitbucket, Jenkins and Jira; analyzed HW–FW interactions using logic analyzers and oscilloscopes.</li>
+            </ul>
+          </article>
+
+          <article class="job">
+            <div class="job-head">
+              <div>
+                <h3>Embedded Engineer</h3>
+                <div class="company">IKA India Private Limited</div>
+              </div>
+              <div class="job-meta">
+                <span>Bangalore</span>
+                <span>Apr 2017 – Oct 2020</span>
+              </div>
+            </div>
+            <ul>
+              <li>Key developer in a lean engineering team (2 members) driving firmware and UI for <strong>IKA Matrix, IKA T25 and IKA MultiDrive</strong> lab automation products.</li>
+              <li>Developed firmware for <strong>STM32</strong> in Embedded C on Keil IDE for device control and reliable operation.</li>
+              <li>Built embedded LCD GUIs using <strong>EasyGUI</strong> and <strong>TouchGFX</strong>.</li>
+              <li>Wrote drivers for third-party BLE &amp; Wi-Fi chipsets over UART for wireless connectivity.</li>
+              <li>Managed projects with SVN, Jira and Confluence; collaborated with global cross-functional teams.</li>
+            </ul>
+          </article>
+
+          <article class="job">
+            <div class="job-head">
+              <div>
+                <h3>Senior Software Engineer</h3>
+                <div class="company">Tech Mahindra — Medical Devices Team</div>
+              </div>
+              <div class="job-meta">
+                <span>Bangalore</span>
+                <span>Jul 2016 – Apr 2017</span>
+              </div>
+            </div>
+            <ul>
+              <li>Developed POC firmware for a next-generation blood centrifuge in partnership with <strong>Terumo-BCT USA</strong>.</li>
+              <li>Integrated ADCs, color sensors, RFID and motor-control interfaces; implemented CAN/UART drivers on Freescale MK20/MK40.</li>
+            </ul>
+          </article>
+
+          <article class="job">
+            <div class="job-head">
+              <div>
+                <h3>Firmware Engineer</h3>
+                <div class="company">Efftronics Systems Pvt. Ltd.</div>
+              </div>
+              <div class="job-meta">
+                <span>Vijayawada</span>
+                <span>Jun 2013 – Jun 2016</span>
+              </div>
+            </div>
+            <ul>
+              <li>Built firmware for <strong>railway signalling</strong> and home automation products.</li>
+              <li>Implemented protocol conversion for signalling and UIs on alphanumeric LCDs.</li>
+              <li>Developed services and drivers for NFC, NTP, web interfaces and low-level buses (I²C, SPI, UART).</li>
+            </ul>
+          </article>
+        </section>
+      </main>
     </div>
+
+    <footer>
+      Last updated: May 2026 · Print-friendly — use your browser's print to save as PDF
+    </footer>
   </div>
+
   <script>
-    // Print button
-    document.getElementById('printBtn').addEventListener('click', function(){
-      window.print();
-    });
+    // Download button links directly to UdayKiranResume.pdf via the anchor's download attribute.
   </script>
 </body>
 </html>
