@@ -65,7 +65,7 @@
       filter:blur(10px);pointer-events:none;
     }
     .hero-grid{
-      display:grid;grid-template-columns:auto 1fr auto;gap:clamp(20px,3vw,36px);align-items:center;
+      display:grid;grid-template-columns:1fr auto;gap:clamp(20px,3vw,36px);align-items:center;
       position:relative;z-index:1;
     }
     .avatar{
@@ -235,16 +235,14 @@
     <!-- ===== HERO ===== -->
     <section class="hero">
       <div class="hero-grid">
-        <div class="avatar">UK</div>
         <div>
           <h1>Uday Kiran Gudla</h1>
-          <div class="role">Automotive MCAL · Embedded Systems Specialist</div>
-          <p class="tagline">12+ years engineering high-reliability firmware across automotive, IoT, industrial and railway signalling — with deep expertise in AUTOSAR MCAL, Aurix TriCore, ARM Cortex-M and ZigBee/BLE ecosystems.</p>
+          <div class="role"> Embedded Systems Specialist</div>
+          <p class="tagline">Engineering high-reliability firmware across automotive, IoT, industrial and railway signalling</p>
           <div class="contact">
             <a href="mailto:uday5091@gmail.com">uday5091@gmail.com</a>
             <span>+91 9966066797</span>
             <span>Bangalore, India</span>
-            <a href="https://github.com/UdayKiranGudla" target="_blank" rel="noopener">github.com/UdayKiranGudla</a>
             <a href="https://www.linkedin.com/in/UdayKiranGudla" target="_blank" rel="noopener">linkedin.com/in/UdayKiranGudla</a>
           </div>
         </div>
@@ -261,13 +259,13 @@
         <div><div class="num">12+</div><div class="lbl">Years Experience</div></div>
       </div>
       <div class="stat">
-        <div><div class="num">5</div><div class="lbl">Companies</div></div>
-      </div>
-      <div class="stat">
-        <div><div class="num">4</div><div class="lbl">Domains</div></div>
-      </div>
-      <div class="stat">
         <div><div class="num">ISO 26262</div><div class="lbl">Functional Safety</div></div>
+      </div>
+      <div class="stat">
+        <div><div class="num">Zigbee Applications</div><div class="lbl">Connectivity</div></div>
+      </div>
+      <div class="stat">
+        <div><div class="num">AUTOSAR</div><div class="lbl">MCAL</div></div>
       </div>
     </section>
 
@@ -317,10 +315,9 @@
           <h2>Education</h2>
           <div class="edu">
             <div>
-              <div><strong>B.Tech — Electronics &amp; Communication</strong></div>
+              <div><strong>B.Tech — Electronics &amp; Communication Engineering</strong></div>
               <div class="meta">Vignan's Foundation for Science, Technology &amp; Research, Guntur</div>
-              <div class="meta">Jun 2009 – Jun 2013 · CGPA 8.0</div>
-              <div class="meta" style="margin-top:6px">6-month embedded internship at Efftronics, Vijayawada</div>
+              <div class="meta">Jun 2009 – Jun 2013</div>
             </div>
           </div>
         </div>
@@ -341,6 +338,7 @@
           <dl class="kv">
             <dt>Languages</dt><dd>English, Telugu, Hindi</dd>
             <dt>Location</dt><dd>Bangalore, India</dd>
+            <dt>Date of Birth</dt><dd>12 Feb 1992</dd>
           </dl>
         </div>
       </aside>
@@ -385,8 +383,7 @@
             </div>
             <ul>
               <li>Leading development and optimization of AUTOSAR MCAL drivers for Infineon Aurix 3rd Generation TriCore microcontrollers, enabling reliable, high-performance ECU software platforms.</li>
-              <li>Owning the <strong>Ethernet MCAL</strong> module end-to-end — design, development, integration and validation in line with AUTOSAR architecture and automotive quality standards.</li>
-              <li>Engineering <strong>SPI &amp; Ethernet</strong> MCAL components, strengthening communication stack performance and BSW integration.</li>
+              <li>Owning the <strong>Ethernet MCAL</strong> module end-to-end — design, development and integration in line with AUTOSAR architecture and automotive quality standards.</li>
               <li>Implementing ASPICE processes and ISO 26262 functional safety practices with traceable, high-quality documentation.</li>
               <li>Using advanced toolchains: <em>Jama, Enterprise Architect, Tresos, UDE, Polyspace, Lint</em>.</li>
               <li>Managing CI/CD via Jenkins, Bitbucket and Jira; building Python automation to boost release efficiency.</li>
@@ -450,6 +447,39 @@
               <li>Developed POC firmware for a next-generation blood centrifuge in partnership with <strong>Terumo-BCT USA</strong>.</li>
               <li>Integrated ADCs, color sensors, RFID and motor-control interfaces; implemented CAN/UART drivers on Freescale MK20/MK40.</li>
             </ul>
+          </article>
+
+          <article class="job">
+            <div class="job-head">
+              <div>
+                <h3>Firmware Engineer</h3>
+                <div class="company">Efftronics Systems Private Limited</div>
+              </div>
+              <div class="job-meta">
+                <span>Vijayawada</span>
+                <span>Jun 2013 – Jun 2016</span>
+              </div>
+            </div>
+            <ul>
+              <li>Developed embedded firmware for <strong>Indian Railways Signalling &amp; Telecommunications (S&amp;T)</strong> products, contributing to safety-critical railway signalling deployments.</li>
+              <li>Implemented low-level drivers and communication interfaces in Embedded C on 8/16/32-bit microcontroller platforms.</li>
+              <li>Collaborated with hardware and validation teams on board bring-up, integration testing and field-deployment readiness.</li>
+            </ul>
+          </article>
+        </section>
+
+        <footer>
+          <p>© <span id="yr"></span> Uday Kiran Gudla · Built with HTML &amp; CSS · <a href="UdayKiranResume.pdf" download>Download PDF Resume</a></p>
+        </footer>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('yr').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
           </article>
 
           <article class="job">
